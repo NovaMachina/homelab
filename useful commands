@@ -1,0 +1,7 @@
+kubeseal --format=yaml --cert=pub-sealed-secrets.pem \
+< input-file.yaml > output-file-sealed.yaml
+
+kubectl -n namespace create secret generic secret-name \
+--from-literal=user=admin \
+--dry-run=client \
+-o yaml > output-file.yaml
