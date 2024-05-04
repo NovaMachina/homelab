@@ -2,10 +2,10 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: wildcard-example-com
+  name: wildcard-jacob-williams-me
   namespace: traefik
 spec:
-  secretName: wildcard-example-com-tls
+  secretName: wildcard-jacob-williams-me-tls
   dnsNames:
     - "jacob-williams.me"
     - "*.jacob-williams.me"
