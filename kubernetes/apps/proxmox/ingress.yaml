@@ -24,5 +24,3 @@ spec:
           passHostHeader: true
       middlewares:
         - name: default-headers
-  tls:
-    secretName: wildcard-jacob-williams-me-tls
