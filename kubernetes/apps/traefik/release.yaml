@@ -20,3 +20,8 @@ spec:
   targetNamespace: traefik
   upgrade:
     crds: CreateReplace
+  values:
+    tlsStore:
+      default:
+        defaultCertificate:
+          secretName: wildcard-jacob-williams-me-tls
