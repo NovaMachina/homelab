@@ -8,13 +8,6 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`www.proxmox.jacob-williams.me`)
-      kind: Rule
-      services:
-        - name: proxmox
-          port: 8006
-          scheme: http
-          passHostHeader: true
     - match: Host(`proxmox.jacob-williams.me`)
       kind: Rule
       services:
