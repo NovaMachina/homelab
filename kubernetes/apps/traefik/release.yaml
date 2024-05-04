@@ -25,3 +25,8 @@ spec:
       default:
         defaultCertificate:
           secretName: wildcard-jacob-williams-me-tls
+    providers:
+      kubernetesCRD:
+        allowExternalNameServices: true
+      kubernetesIngress:
+        allowExternalNameServices: true
