@@ -5,7 +5,7 @@ metadata:
   name: proxmox
   namespace: default
 spec:
-  externalName: proxmox.home.arpa
+  externalName: 10.0.10.2
   type: ExternalName
   ports:
   - name: websecure
