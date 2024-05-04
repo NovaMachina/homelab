@@ -5,6 +5,7 @@ metadata:
   name: whoami
   labels:
     app: whoami
+  namespace: default
 
 spec:
   replicas: 1
