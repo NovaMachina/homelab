@@ -2,24 +2,24 @@
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: proxmox
+  name: whoami
   namespace: default
 spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`www.proxmox.jacob-williams.me`)
+    - match: Host(`www.whoami.jacob-williams.me`)
       kind: Rule
       services:
-        - name: proxmox
-          port: 8006
+        - name: whoami
+          port: 80
           scheme: https
           passHostHeader: true
-    - match: Host(`proxmox.jacob-williams.me`)
+    - match: Host(`whoami.jacob-williams.me`)
       kind: Rule
       services:
-        - name: proxmox
-          port: 8006
+        - name: whoami
+          port: 80
           scheme: https
           passHostHeader: true
       middlewares:
