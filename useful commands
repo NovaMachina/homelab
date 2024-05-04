@@ -5,3 +5,5 @@ kubectl -n namespace create secret generic secret-name \
 --from-literal=user=admin \
 --dry-run=client \
 -o yaml > output-file.yaml
+
+kubectl -n traefik port-forward $(kubectl -n traefik get pods --selector "app.kubernetes.io/name=traefik" --output=name) 9000:9000
