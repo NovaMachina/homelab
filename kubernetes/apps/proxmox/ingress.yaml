@@ -1,0 +1,26 @@
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: proxmox
+  namespace: default
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`www.proxmox.jacob-williams.me`)
+      kind: Rule
+      services:
+        - name: proxmox
+          port: 8006
+          scheme: http
+          passHostHeader: true
+    - match: Host(`proxmox.jacob-williams.me`)
+      kind: Rule
+      services:
+        - name: proxmox
+          port: 8006
+          scheme: http
+          passHostHeader: true
+      middlewares:
+        - name: default-headers
