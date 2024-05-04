@@ -11,4 +11,4 @@ spec:
     - "*.jacob-williams.me"
   issuerRef:
     name: cloudflare
-    kind: Issuer
+    kind: ClusterIssuer
