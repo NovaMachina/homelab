@@ -30,8 +30,3 @@ spec:
         allowExternalNameServices: true
       kubernetesIngress:
         allowExternalNameServices: true
-    logs:
-      access:
-        enabled: true
-      general:
-        level: DEBUG
