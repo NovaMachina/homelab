@@ -41,3 +41,15 @@ spec:
         expose:
           default: false
           internal: true
+      web:
+        expose:
+          default: true
+          internal: false
+      websecure:
+        expose:
+          default: true
+          internal: false
+      metrics:
+        expose:
+          default: false
+          internal: true
