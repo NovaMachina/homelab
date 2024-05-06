@@ -30,32 +30,14 @@ spec:
         allowExternalNameServices: true
       kubernetesIngress:
         allowExternalNameServices: true
-    service:
-      additionalServices:
-        internal:
-          type: ClusterIP
-          labels:
-            traefik-service-label: internal
     ports:
-      traefik:
-        expose:
-          default: false
-          internal: true
-      web:
-        expose:
-          default: true
-          internal: true
-      websecure:
-        expose:
-          default: true
-          internal: true
-      metrics:
-        expose:
-          default: false
-          internal: true
       http-internal:
         port: 81
-        expose:
-          default: true
-          internal: false
+        expose: true
+        protocol: TCP
+        redirectTo:
+          port: https-internal
+      https-internal:
+        port: 444
+        expose: true
         protocol: TCP
