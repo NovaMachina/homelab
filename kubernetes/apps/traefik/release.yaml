@@ -44,11 +44,11 @@ spec:
       web:
         expose:
           default: true
-          internal: false
+          internal: true
       websecure:
         expose:
           default: true
-          internal: false
+          internal: true
       metrics:
         expose:
           default: false
