@@ -33,11 +33,13 @@ spec:
     ports:
       http-internal:
         port: 81
-        expose: true
+        expose:
+          default: true
         protocol: TCP
         redirectTo:
           port: https-internal
       https-internal:
         port: 444
-        expose: true
+        expose:
+          default: true
         protocol: TCP
