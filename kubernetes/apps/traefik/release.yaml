@@ -30,3 +30,9 @@ spec:
         allowExternalNameServices: true
       kubernetesIngress:
         allowExternalNameServices: true
+  service:
+    additionalServices:
+      internal:
+        type: ClusterIP
+        labels:
+          traefik-service-label: internal
