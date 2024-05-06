@@ -3,3 +3,5 @@ kind: Kustomization
 resources:
   - cert-manager.yaml
   - sealed-secrets.yaml
+  - kube-prometheus-stack/
+  - loki-stack/
