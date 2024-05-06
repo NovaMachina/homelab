@@ -53,3 +53,9 @@ spec:
         expose:
           default: false
           internal: true
+      http-internal:
+        port: 81
+        expose:
+          default: true
+          internal: false
+        protocol: TCP
