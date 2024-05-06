@@ -8,6 +8,13 @@ spec:
   entryPoints:
     - websecure
   routes:
+    - match: Host(`www.whoami.jacob-williams.me`)
+      kind: Rule
+      services:
+        - name: whoami
+          port: 80
+          scheme: http
+          passHostHeader: true
     - match: Host(`whoami.jacob-williams.me`)
       kind: Rule
       services:
