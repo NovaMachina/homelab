@@ -32,18 +32,22 @@ spec:
         allowExternalNameServices: true
     ports:
       web:
-        port: 81
+        port: 8001
+        exposedPort: 81
       websecure:
-        port: 444
+        port: 8444
+        exposedPort: 444
       internal:
-        port: 80
+        port: 8000
+        exposedPort: 80
         expose:
           default: true
         protocol: TCP
         redirectTo:
           port: internalsecure
       internalsecure:
-        port: 443
+        port: 8443
+        exposedPort: 443
         expose:
           default: true
         protocol: TCP
