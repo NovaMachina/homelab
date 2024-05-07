@@ -6,7 +6,7 @@ metadata:
   namespace: longhorn-system
 spec:
   entryPoints:
-    - internal
+    - internalsecure
   routes:
     - match: Host(`longhorn.internal.jacob-williams.me`)
       kind: Rule
