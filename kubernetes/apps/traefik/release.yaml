@@ -30,24 +30,3 @@ spec:
         allowExternalNameServices: true
       kubernetesIngress:
         allowExternalNameServices: true
-    ports:
-      web:
-        port: 8001
-        exposedPort: 81
-      websecure:
-        port: 8444
-        exposedPort: 444
-      internal:
-        port: 8000
-        exposedPort: 80
-        expose:
-          default: true
-        protocol: TCP
-        redirectTo:
-          port: internalsecure
-      internalsecure:
-        port: 8443
-        exposedPort: 443
-        expose:
-          default: true
-        protocol: TCP

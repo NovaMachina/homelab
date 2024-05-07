@@ -6,14 +6,14 @@ metadata:
   namespace: default
 spec:
   entryPoints:
-    - internalsecure
+    - websecure
   routes:
-    - match: Host(`whoami.internal.jacob-williams.me`)
+    - match: Host(`whoami.jacob-williams.me`)
       kind: Rule
       services:
         - name: whoami
           port: 80
-          scheme: http
+          scheme: https
           passHostHeader: true
       middlewares:
         - name: default-headers
