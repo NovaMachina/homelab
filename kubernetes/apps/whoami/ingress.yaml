@@ -13,7 +13,7 @@ spec:
       services:
         - name: whoami
           port: 80
-          scheme: https
+          scheme: http
           passHostHeader: true
       middlewares:
         - name: default-headers
