@@ -31,14 +31,14 @@ spec:
       kubernetesIngress:
         allowExternalNameServices: true
     ports:
-      http-internal:
+      internal:
         port: 81
         expose:
           default: true
         protocol: TCP
         redirectTo:
-          port: https-internal
-      https-internal:
+          port: internalsecure
+      internalsecure:
         port: 444
         expose:
           default: true

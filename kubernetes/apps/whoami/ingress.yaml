@@ -6,7 +6,7 @@ metadata:
   namespace: default
 spec:
   entryPoints:
-    - websecure
+    - internalsecure
   routes:
     - match: Host(`whoami.jacob-williams.me`)
       kind: Rule
