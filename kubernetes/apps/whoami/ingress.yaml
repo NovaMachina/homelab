@@ -8,7 +8,7 @@ spec:
   entryPoints:
     - internalsecure
   routes:
-    - match: Host(`whoami.jacob-williams.me`)
+    - match: Host(`whoami.internal.jacob-williams.me`)
       kind: Rule
       services:
         - name: whoami
