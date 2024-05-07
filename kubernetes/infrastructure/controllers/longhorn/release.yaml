@@ -1,0 +1,26 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: longhorn
+  namespace: longhorn-system
+spec:
+  chart:
+    spec:
+      chart: longhorn
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: longhorn-repo
+      version: v1.6.1
+  interval: 1h0m0s
+  values:
+    longhornManager:
+      nodeSelector:
+        longhorn: "true"
+    longhornDriver:
+      nodeSelector:
+        longhorn: "true"
+    longhornUI:
+      nodeSelector:
+        longhorn: "true"
