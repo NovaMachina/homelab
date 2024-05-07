@@ -30,3 +30,88 @@ spec:
         allowExternalNameServices: true
       kubernetesIngress:
         allowExternalNameServices: true
+    ports:
+      web:
+        port: 8001
+        expose:
+          default: true
+        exposedPort: 81
+        protocol: TCP
+        redirectTo:
+          port: websecure
+        transport:
+          respondingTimeouts:
+            readTimeout:
+            writeTimeout:
+            idleTimeout:
+          lifeCycle:
+            requestAcceptGraceTimeout:
+            graceTimeOut:
+          keepAliveMaxRequests:
+          keepAliveMaxTime:
+      websecure:
+        port: 8444
+        expose:
+          default: true
+        exposedPort: 444
+        protocol: TCP
+        http3:
+          enabled: false
+        transport:
+          respondingTimeouts:
+            readTimeout:
+            writeTimeout:
+            idleTimeout:
+          lifeCycle:
+            requestAcceptGraceTimeout:
+            graceTimeOut:
+          keepAliveMaxRequests:
+          keepAliveMaxTime:
+        tls:
+          enabled: true
+          options: ""
+          certResolver: ""
+          domains: []
+        middlewares: []
+      internal:
+        port: 8000
+        expose:
+          default: true
+        exposedPort: 80
+        protocol: TCP
+        redirectTo:
+          port: internalsecure
+        transport:
+          respondingTimeouts:
+            readTimeout:
+            writeTimeout:
+            idleTimeout:
+          lifeCycle:
+            requestAcceptGraceTimeout:
+            graceTimeOut:
+          keepAliveMaxRequests:
+          keepAliveMaxTime:
+      internalsecure:
+        port: 8443
+        expose:
+          default: true
+        exposedPort: 443
+        protocol: TCP
+        http3:
+          enabled: false
+        transport:
+          respondingTimeouts:
+            readTimeout:
+            writeTimeout:
+            idleTimeout:
+          lifeCycle:
+            requestAcceptGraceTimeout:
+            graceTimeOut:
+          keepAliveMaxRequests:
+          keepAliveMaxTime:
+        tls:
+          enabled: true
+          options: ""
+          certResolver: ""
+          domains: []
+        middlewares: []
