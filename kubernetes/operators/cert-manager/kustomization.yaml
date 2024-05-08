@@ -4,5 +4,5 @@ resources:
   - namespace.yaml
   - repository.yaml
   - release.yaml
-  # - issuer.yaml
+  - issuer.yaml
   - cloudflare-secret-sealed.yaml
