@@ -14,13 +14,3 @@ spec:
         name: longhorn-repo
       version: v1.6.1
   interval: 1h0m0s
-  values:
-    longhornManager:
-      nodeSelector:
-        longhorn: "true"
-    longhornDriver:
-      nodeSelector:
-        longhorn: "true"
-    longhornUI:
-      nodeSelector:
-        longhorn: "true"
