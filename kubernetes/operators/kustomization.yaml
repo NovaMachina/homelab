@@ -4,4 +4,4 @@ resources:
   # - kube-prometheus-stack/
   # - loki-stack/
   - sealed-secrets/
-  # - cert-manager/
+  - cert-manager/
