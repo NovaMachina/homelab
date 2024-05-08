@@ -5,6 +5,7 @@ metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.14.0
   name: scheduledbackups.postgresql.cnpg.io
+  namespace: cnpg-system
 spec:
   group: postgresql.cnpg.io
   names:
@@ -13,7 +14,6 @@ spec:
     plural: scheduledbackups
     singular: scheduledbackup
   scope: Namespaced
-  namespace: cnpg-system
   versions:
   - additionalPrinterColumns:
     - jsonPath: .metadata.creationTimestamp
