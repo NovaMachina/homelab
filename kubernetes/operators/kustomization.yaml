@@ -5,3 +5,4 @@ resources:
   - loki-stack/
   - sealed-secrets/
   - cert-manager/
+  - cloudnative-pg/
