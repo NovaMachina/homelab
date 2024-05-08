@@ -4,4 +4,4 @@ resources:
   - longhorn/
   - traefik/
   - whoami/
-  # - test-pg-cluster.yaml
+  - test-pg-cluster.yaml
