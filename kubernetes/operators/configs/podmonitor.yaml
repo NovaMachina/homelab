@@ -10,7 +10,6 @@ spec:
   namespaceSelector:
     matchNames:
       - flux-system
-      - traefik
   selector:
     matchExpressions:
       - key: app
