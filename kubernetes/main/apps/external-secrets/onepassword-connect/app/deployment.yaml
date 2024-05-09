@@ -1,0 +1,81 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: onepassword-connect
+spec:
+  selector:
+    matchLabels:
+      app: onepassword-connect
+  template:
+    metadata:
+      labels:
+        app: onepassword-connect
+    spec:
+      containers:
+        - name: connect-api
+          image: 1password/connect-api:1.7.2
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "0.2"
+          env:
+            - name: XDG_DATA_HOME
+              value: &configDir /config
+            - name: OP_HTTP_PORT
+              value: &apiPort 80
+            - name: OP_BUS_PORT
+              value: 11220
+            - name: OP_BUS_PEERS
+              value: localhost:11221
+            - name: OP_SESSION
+              valueFrom:
+                secretKeyRef:
+                  name: onepassword-connect-secret
+                  key: 1password-credentials.json
+          livenessProbe:
+            httpGet:
+              path: /heartbeat
+              port: *apiPort
+            initialDelaySeconds: 15
+            periodSeconds: 30
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: *apiPort
+            initialDelaySeconds: 15
+        - name: connect-sync
+          image: 1password/connect-sync:1.7.2
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "0.2"
+          env:
+            - name: XDG_DATA_HOME
+              value: *configDir
+            - name: OP_HTTP_PORT
+              value: &syncPort 8081
+            - name: OP_BUS_PORT
+              value: 11221
+            - name: OP_BUS_PEERS
+              value: localhost:11220
+            - name: OP_SESSION
+              valueFrom:
+                secretKeyRef:
+                  name: onepassword-connect-secret
+                  key: 1password-credentials.json
+            - name: OP_HTTP_PORT
+              value: "8081"
+          livenessProbe:
+            httpGet:
+              path: /heartbeat
+              port: *syncPort
+            initialDelaySeconds: 15
+            periodSeconds: 30
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: *syncPort
+            initialDelaySeconds: 15
