@@ -26,13 +26,3 @@ spec:
     remediation:
       strategy: rollback
       retries: 3
-  values:
-    connect:
-      credentialsName: onepassword-connect-secret
-      customEnvVars:
-        - name: "OP_SESSION"
-          valueFrom:
-            secretKeyRef:
-              name: onepassword-connect-secret
-              key: 1password-credentials.json
-              namespace: external-secrets

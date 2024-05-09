@@ -4,4 +4,6 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - ./helmrelease.yaml
-  - ./onepassword-connect.secret.sealed.yaml
+  # - ./onepassword-connect.secret.sealed.yaml
+  - ./op-credentials.sealed.yaml
+  - ./op-token.sealed.yaml
