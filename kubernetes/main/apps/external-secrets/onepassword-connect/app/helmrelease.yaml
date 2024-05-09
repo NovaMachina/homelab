@@ -28,6 +28,7 @@ spec:
       retries: 3
   values:
     connect:
+      credentialsName: onepassword-connect-secret
       customEnvVars:
         - name: "OP_SESSION"
           valueFrom:
