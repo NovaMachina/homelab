@@ -1,0 +1,37 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2beta2.schema.json
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: onepassword-connect
+spec:
+  interval: 1h
+  chart:
+    spec:
+      chart: connect
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: onepassword
+        namespace: flux-system
+      version: 1.15.0
+  install:
+    crds: Create
+    remediation:
+      retries: 3
+  targetNamespace: external-secrets
+  upgrade:
+    crds: CreateReplace
+    cleanupOnFail: true
+    remediation:
+      strategy: rollback
+      retries: 3
+  values:
+    connect:
+      customEnvVars:
+        - name: "OP_SESSION"
+          valueFrom:
+            secretKeyRef:
+              name: onepassword-connect-secret
+              key: 1password-credentials.json
+              namespace: external-secrets
