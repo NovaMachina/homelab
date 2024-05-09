@@ -23,9 +23,9 @@ spec:
             - name: XDG_DATA_HOME
               value: &configDir '/config'
             - name: OP_HTTP_PORT
-              value: &apiPort 80
+              value: '80'
             - name: OP_BUS_PORT
-              value: 11220
+              value: '11220'
             - name: OP_BUS_PEERS
               value: 'localhost:11221'
             - name: OP_SESSION
@@ -36,14 +36,14 @@ spec:
           livenessProbe:
             httpGet:
               path: /heartbeat
-              port: *apiPort
+              port: 80
             initialDelaySeconds: 15
             periodSeconds: 30
             failureThreshold: 3
           readinessProbe:
             httpGet:
               path: /health
-              port: *apiPort
+              port: 80
             initialDelaySeconds: 15
         - name: connect-sync
           image: 1password/connect-sync:1.7.2
@@ -55,9 +55,9 @@ spec:
             - name: XDG_DATA_HOME
               value: *configDir
             - name: OP_HTTP_PORT
-              value: &syncPort 8081
+              value: '8081'
             - name: OP_BUS_PORT
-              value: 11221
+              value: '11221'
             - name: OP_BUS_PEERS
               value: 'localhost:11220'
             - name: OP_SESSION
@@ -68,12 +68,12 @@ spec:
           livenessProbe:
             httpGet:
               path: /heartbeat
-              port: *syncPort
+              port: 8081
             initialDelaySeconds: 15
             periodSeconds: 30
             failureThreshold: 3
           readinessProbe:
             httpGet:
               path: /health
-              port: *syncPort
+              port: 8081
             initialDelaySeconds: 15
