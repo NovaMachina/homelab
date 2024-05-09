@@ -3,7 +3,13 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: onepassword-connect
+  selector:
+    matchLabels:
+      app: onepassword-connect
   template:
+    metadata:
+      labels:
+        app: onepassword-connect
     spec:
       containers:
         - name: connect-api
