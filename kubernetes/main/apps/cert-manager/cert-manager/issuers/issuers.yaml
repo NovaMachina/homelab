@@ -14,9 +14,9 @@ spec:
       - dns01:
           cloudflare:
             email: jacob.t.williams@outlook.com
-            apiKeySecretRef:
+            apiTokenSecretRef:
               name: cloudflare-secret
-              key: CLOUDFLARE_API_KEY
+              key: CLOUDFLARE_API_TOKEN
         # selector:
         #   dnsZones: ["devbu.io"]
 ---
@@ -35,8 +35,8 @@ spec:
       - dns01:
           cloudflare:
             email: jacob.t.williams@outlook.com
-            apiKeySecretRef:
+            apiTokenSecretRef:
               name: cloudflare-secret
-              key: CLOUDFLARE_API_KEY
+              key: CLOUDFLARE_API_TOKEN
         # selector:
         #   dnsZones: ["devbu.io"]
