@@ -2,13 +2,12 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: wildcard-jacob-williams-me
-  namespace: traefik
+  name: jacob-williams-me
 spec:
-  secretName: wildcard-jacob-williams-me-tls
+  secretName: jacob-williams-me-tls
   dnsNames:
     - "jacob-williams.me"
     - "*.jacob-williams.me"
   issuerRef:
-    name: cloudflare
+    name: letsencrypt-production
     kind: ClusterIssuer
