@@ -21,13 +21,13 @@ spec:
               cpu: "0.2"
           env:
             - name: XDG_DATA_HOME
-              value: &configDir /config
+              value: &configDir '/config'
             - name: OP_HTTP_PORT
-              value: &apiPort 80
+              value: &apiPort '80'
             - name: OP_BUS_PORT
-              value: 11220
+              value: '11220'
             - name: OP_BUS_PEERS
-              value: localhost:11221
+              value: 'localhost:11221'
             - name: OP_SESSION
               valueFrom:
                 secretKeyRef:
@@ -55,11 +55,11 @@ spec:
             - name: XDG_DATA_HOME
               value: *configDir
             - name: OP_HTTP_PORT
-              value: &syncPort 8081
+              value: &syncPort '8081'
             - name: OP_BUS_PORT
-              value: 11221
+              value: '11221'
             - name: OP_BUS_PEERS
-              value: localhost:11220
+              value: 'localhost:11220'
             - name: OP_SESSION
               valueFrom:
                 secretKeyRef:
