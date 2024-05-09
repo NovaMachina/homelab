@@ -1,12 +1,8 @@
 kubeseal --controller-namespace=sealed-secrets --fetch-cert > pub-sealed-secrets.pem
 kubectl port-forward service/sealed-secrets-controller 8080:8080 -n sealed-secrets
 
-kubeseal --format=yaml --cert=pub-sealed-secrets.pem \
-< input-file.yaml > output-file-sealed.yaml
+kubeseal --format=yaml --cert=pub-sealed-secrets.pem < input-file.yaml > output-file-sealed.yaml
 
-kubectl -n namespace create secret generic secret-name \
---from-literal=user=admin \
---dry-run=client \
--o yaml > output-file.yaml
+kubectl -n namespace create secret generic secret-name --from-literal=user=admin --dry-run=client -o yaml > output-file.yaml
 
 kubectl -n traefik port-forward $(kubectl -n traefik get pods --selector "app.kubernetes.io/name=traefik" --output=name) 9000:9000
