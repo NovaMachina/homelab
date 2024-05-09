@@ -4,9 +4,6 @@ kind: Deployment
 metadata:
   name: onepassword-connect
 spec:
-  selector:
-    matchLabels:
-      app: onepassword-connect
   template:
     metadata:
       labels:
