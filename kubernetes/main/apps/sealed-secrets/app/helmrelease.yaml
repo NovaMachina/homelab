@@ -5,19 +5,25 @@ kind: HelmRelease
 metadata:
   name: sealed-secrets
 spec:
+  interval: 1h
   chart:
     spec:
       chart: sealed-secrets
       reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository
-        name: bitnami
+        name: sealed-secrets
         namespace: flux-system
       version: '>=1.15.0-0'
   install:
     crds: Create
-  interval: 1h0m0s
+    remediation:
+      retries: 3
   releaseName: sealed-secrets-controller
   targetNamespace: sealed-secrets
   upgrade:
     crds: CreateReplace
+    cleanupOnFail: true
+    remediation:
+      strategy: rollback
+      retries: 3

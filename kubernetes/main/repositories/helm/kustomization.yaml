@@ -8,4 +8,5 @@ resources:
   - grafana.yaml
   - jetstack.yaml
   - longhorn.yaml
+  - sealed-secrets.yaml
   - traefik.yaml
