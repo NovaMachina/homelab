@@ -2,7 +2,7 @@ kubeseal --controller-namespace=sealed-secrets --fetch-cert > pub-sealed-secrets
 kubectl port-forward service/sealed-secrets-controller 8080:8080 -n sealed-secrets
 
 kubeseal --format=yaml --cert=pub-sealed-secrets.pem < input-file.yaml > output-file-sealed.yaml
-cat ./kubernetes/main/apps/external-secrets/onepassword-connect/onepassword-connect.secret.sealed.yaml | kubeseal --controller-namespace sealed-secrets --validate
+cat onepassword-connect.secret.sealed.yaml | kubeseal --controller-namespace sealed-secrets --validate
 
 kubectl -n namespace create secret generic secret-name --from-literal=user=admin --dry-run=client -o yaml > output-file.yaml
 
