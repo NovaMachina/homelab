@@ -25,6 +25,7 @@ spec:
       default:
         defaultCertificate:
           secretName: jacob-williams-me-tls
+          namesapce: cert-manager
     providers:
       kubernetesCRD:
         allowExternalNameServices: true
