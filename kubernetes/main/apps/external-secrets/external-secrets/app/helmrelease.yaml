@@ -24,7 +24,7 @@ spec:
       retries: 3
   dependsOn:
     - name: onepassword-connect
-      namespace: flux-system
+      namespace: external-secrets
   values:
     installCRDs: true
     serviceMonitor:
