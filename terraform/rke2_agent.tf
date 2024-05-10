@@ -1,8 +1,8 @@
-resource "proxmox_vm_qemu" "rke2-longhorn-node" {
+resource "proxmox_vm_qemu" "rke2-agent-node" {
     # Node name has to be the same name as within the cluster
     # this might not include the FQDN
     target_node = "pve"
-    desc = "RKE2 Longhorn Storage Node ${count.index + 1}"
+    desc = "RKE2 General Agent ${count.index + 1}"
     count = 3
     onboot = true
 
@@ -18,10 +18,10 @@ resource "proxmox_vm_qemu" "rke2-longhorn-node" {
     numa = true
     vcpus = 0
     cpu = "host"
-    memory = 4096
-    name = "rke2-longhorn-0${count.index + 1}"
+    memory = 8192
+    name = "rke2-agent-0${count.index + 1}"
 
-    cloudinit_cdrom_storage = "TrueNAS"
+    cloudinit_cdrom_storage = "local-lvm"
     scsihw   = "virtio-scsi-single" 
     bootdisk = "scsi0"
 
@@ -29,8 +29,8 @@ resource "proxmox_vm_qemu" "rke2-longhorn-node" {
         scsi {
             scsi0 {
                 disk {
-                  storage = "TrueNAS"
-                  size = "256"
+                  storage = "local-lvm"
+                  size = "20"
                 }
             }
         }
@@ -43,10 +43,4 @@ resource "proxmox_vm_qemu" "rke2-longhorn-node" {
     }
 
     ciuser = "ubuntu"
-
-    timeouts {
-      create = "2h"
-      update = "2h"
-      delete = "20m"
-    }
 }
