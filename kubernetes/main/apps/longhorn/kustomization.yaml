@@ -1,4 +1,5 @@
 ---
+# yaml-language-server: $schema=https://json.schemastore.org/kustomization
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: longhorn-system
@@ -6,5 +7,5 @@ resources:
   - namespace.yaml
   - repository.yaml
   - release.yaml
-  - ingress.yaml
-  - default-headers.yaml
+  # - ingress.yaml
+  # - default-headers.yaml
