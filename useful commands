@@ -7,3 +7,13 @@ cat secret.sealed.yaml | kubeseal --controller-namespace sealed-secrets --valida
 kubectl -n namespace create secret generic secret-name --from-literal=user=admin --dry-run=client -o yaml > secret.yaml
 
 kubectl -n traefik port-forward $(kubectl -n traefik get pods --selector "app.kubernetes.io/name=traefik" --output=name) 9000:9000
+
+op read "op://homelab/GitHub FluxCD/token" |
+flux bootstrap github \
+  --token-auth \
+  --owner=NovaMachina \
+  --repository=homelab \
+  --branch=main \
+  --path=kubernetes/main \
+  --personal \
+  --private=false
