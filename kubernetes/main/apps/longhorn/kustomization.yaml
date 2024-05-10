@@ -5,7 +5,6 @@ kind: Kustomization
 namespace: longhorn-system
 resources:
   - namespace.yaml
-  - repository.yaml
   - release.yaml
   # - ingress.yaml
   # - default-headers.yaml
