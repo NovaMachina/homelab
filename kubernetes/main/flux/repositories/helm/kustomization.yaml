@@ -11,4 +11,5 @@ resources:
   - novamachina.yaml
   - onepassword.yaml
   - sealed-secrets.yaml
+  - stakater.yaml
   - traefik.yaml
