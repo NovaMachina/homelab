@@ -10,7 +10,7 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
-  path: ./kubernetes/main/apps/traefik/app
+  path: ./kubernetes/main/apps/network/traefik/app
   prune: true
   dependsOn:
     - name: certificates
