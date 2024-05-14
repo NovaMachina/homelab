@@ -26,3 +26,7 @@ spec:
     remediation:
       strategy: rollback
       retries: 3
+  values:
+    connect:
+      annotations:
+        secret.reloader.stakater.com/reload: "op-credentials"
