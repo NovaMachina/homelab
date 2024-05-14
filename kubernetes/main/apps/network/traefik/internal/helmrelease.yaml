@@ -41,4 +41,4 @@ spec:
       dashboard:
         enabled: true
         matchRule: Host(`traefik-internal.internal.jacob-williams.me`)
-        entryPoints: ["internalsecure"]
+        entryPoints: ["websecure"]
