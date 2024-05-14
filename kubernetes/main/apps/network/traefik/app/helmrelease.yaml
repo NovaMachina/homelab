@@ -17,7 +17,6 @@ spec:
     crds: Create
   interval: 1h0m0s
   releaseName: traefik-controller
-  targetNamespace: traefik
   upgrade:
     crds: CreateReplace
   values:
