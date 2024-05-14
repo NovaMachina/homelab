@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
-  name: traefik-external
+  name: traefik
 spec:
   chart:
     spec:
@@ -16,12 +16,13 @@ spec:
   install:
     crds: Create
   interval: 1h0m0s
-  releaseName: traefik-external-controller
+  releaseName: traefik-controller
+  targetNamespace: traefik
   upgrade:
     crds: CreateReplace
   values:
     tlsStore:
-      default-external:
+      default:
         defaultCertificate:
           secretName: jacob-williams-me-tls
     providers:
@@ -72,8 +73,50 @@ spec:
           certResolver: ""
           domains: []
         middlewares: []
+      internal:
+        port: 8000
+        expose:
+          default: true
+        exposedPort: 80
+        protocol: TCP
+        redirectTo:
+          port: internalsecure
+        transport:
+          respondingTimeouts:
+            readTimeout:
+            writeTimeout:
+            idleTimeout:
+          lifeCycle:
+            requestAcceptGraceTimeout:
+            graceTimeOut:
+          keepAliveMaxRequests:
+          keepAliveMaxTime:
+      internalsecure:
+        port: 8443
+        expose:
+          default: true
+        exposedPort: 443
+        protocol: TCP
+        http3:
+          enabled: false
+        transport:
+          respondingTimeouts:
+            readTimeout:
+            writeTimeout:
+            idleTimeout:
+          lifeCycle:
+            requestAcceptGraceTimeout:
+            graceTimeOut:
+          keepAliveMaxRequests:
+          keepAliveMaxTime:
+        tls:
+          enabled: true
+          options: ""
+          certResolver: ""
+          domains: []
+        middlewares: []
     ingressRoute:
       dashboard:
         enabled: true
-        matchRule: Host(`traefik-external.internal.jacob-williams.me`)
-        entryPoints: ["websecure"]
+        matchRule: Host(`traefik.internal.jacob-williams.me`)
+        entryPoints: ["internalsecure"]
