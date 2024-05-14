@@ -16,8 +16,7 @@ spec:
   install:
     crds: Create
   interval: 1h0m0s
-  releaseName: traefik-controller
-  targetNamespace: traefik
+  releaseName: traefik-external-controller
   upgrade:
     crds: CreateReplace
   values:

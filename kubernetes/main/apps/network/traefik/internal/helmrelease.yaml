@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
-  name: traefik
+  name: traefik-internal
 spec:
   chart:
     spec:
@@ -16,8 +16,7 @@ spec:
   install:
     crds: Create
   interval: 1h0m0s
-  releaseName: traefik-controller
-  targetNamespace: traefik
+  releaseName: traefik-internal-controller
   upgrade:
     crds: CreateReplace
   values:
