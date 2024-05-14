@@ -30,9 +30,21 @@ spec:
     longhornManager:
       nodeSelector:
         longhorn: "true"
+      tolerations:
+      - key: "longhorn-storage"
+        operator: "Exists"
+        effect: "NoSchedule"
     longhornDriver:
       nodeSelector:
         longhorn: "true"
+      tolerations:
+      - key: "longhorn-storage"
+        operator: "Exists"
+        effect: "NoSchedule"
     longhornUI:
       nodeSelector:
         longhorn: "true"
+      tolerations:
+      - key: "longhorn-storage"
+        operator: "Exists"
+        effect: "NoSchedule"
