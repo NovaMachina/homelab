@@ -26,3 +26,13 @@ spec:
     remediation:
       strategy: rollback
       retries: 3
+  values:
+    longhornManager:
+      nodeSelector:
+        longhorn: "true"
+    longhornDriver:
+      nodeSelector:
+        longhorn: "true"
+    longhornUI:
+      nodeSelector:
+        longhorn: "true"
