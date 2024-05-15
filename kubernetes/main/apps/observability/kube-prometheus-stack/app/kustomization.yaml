@@ -6,4 +6,5 @@ resources:
   - ./alertmanager-ingress.yaml
   - ./externalsecret.yaml
   - ./helmrelease.yaml
+  - ./prometheus-ingress.yaml
   # - ./prometheusrule.yaml
