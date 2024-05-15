@@ -1,0 +1,17 @@
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: prometheus-ingress
+  namespace: observability
+spec:
+  entryPoints:
+    - internalsecure
+  routes:
+    - match: Host(`prometheus.internal.jacob-williams.me`)
+      kind: Rule
+      services:
+        - name: kube-prometheus-stack-prometheus
+          port: 9090
+          scheme: http
+          passHostHeader: true
