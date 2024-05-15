@@ -62,20 +62,6 @@ spec:
           - action: drop
             sourceLabels: ["__name__"]
             regex: (apiserver_response_sizes_bucket|apiserver_watch_events_sizes_bucket)
-    kubeControllerManager:
-      enabled: true
-      endpoints: &cp
-        - 10.0.40.113
-        - 10.0.40.110
-        - 10.0.40.112
-    kubeEtcd:
-      enabled: true
-      endpoints: *cp
-    kubeScheduler:
-      enabled: true
-      endpoints: *cp
-    kubeProxy:
-      enabled: false
     prometheus:
       prometheusSpec:
         replicas: 3
