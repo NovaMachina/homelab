@@ -15,5 +15,3 @@ spec:
           port: 80
           scheme: http
           passHostHeader: true
-      middlewares:
-        - name: default-headers
