@@ -15,4 +15,3 @@ spec:
           port: 80
           scheme: http
           passHostHeader: true
-  ingressClassName: traefik-controller
