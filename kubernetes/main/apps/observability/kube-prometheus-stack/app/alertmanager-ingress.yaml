@@ -12,6 +12,6 @@ spec:
       kind: Rule
       services:
         - name: kube-prometheus-stack-alertmanager
-          port: 8080
+          port: 9093
           scheme: http
           passHostHeader: true
