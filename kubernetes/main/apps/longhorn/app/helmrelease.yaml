@@ -28,8 +28,8 @@ spec:
       retries: 3
   values:
     longhornManager:
-      nodeSelector:
-        longhorn: "true"
+      # nodeSelector:
+      #   longhorn: "true"
       tolerations:
       - key: "longhorn-storage"
         operator: "Exists"
