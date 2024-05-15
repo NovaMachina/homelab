@@ -10,6 +10,7 @@ resources:
   - longhorn.yaml
   - novamachina.yaml
   - onepassword.yaml
+  - prometheus-community.yaml
   - sealed-secrets.yaml
   - stakater.yaml
   - traefik.yaml
