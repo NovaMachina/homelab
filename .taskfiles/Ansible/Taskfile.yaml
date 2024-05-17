@@ -46,6 +46,13 @@ tasks:
       vars: ["playbook"]
     preconditions:
       - { msg: "Missing Ansible inventory file", sh: "test -f {{.ANSIBLE_INVENTORY_FILE}}" }
+
+  poweroff:
+    desc: Shutdown all the k8s nodes
+    deps: ["deps"]
+    cmd: "{{.VIRTUAL_ENV}}/bin/ansible kubernetes --inventory {{.ANSIBLE_INVENTORY_FILE}} -a '/usr/bin/systemctl poweroff' --become"
+    preconditions:
+      - { msg: "Missing Ansible inventory file", sh: "test -f {{.ANSIBLE_INVENTORY_FILE}}" }
       
   list:
     desc: List all the hosts
