@@ -1,0 +1,23 @@
+---
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+version: "3"
+
+vars:
+  # Directories
+  ANSIBLE_DIR: "{{.ROOT_DIR}}/ansible"
+  KUBERNETES_DIR: "{{.ROOT_DIR}}/kubernetes"
+  # Files
+  AGE_FILE: "{{.ROOT_DIR}}/age.key"
+  KUBECONFIG_FILE: "{{.ROOT_DIR}}/kubeconfig"
+  PIP_REQUIREMENTS_FILE: "{{.ROOT_DIR}}/requirements.txt"
+  # Binaries
+  PYTHON_BIN: python3
+
+env:
+  VIRTUAL_ENV: "{{.ROOT_DIR}}/.venv"
+
+includes:
+  ansible: .taskfiles/Ansible/Taskfile.yaml
+  flux: .taskfiles/Flux/Taskfile.yaml
+  sops: .taskfiles/Sops/Taskfile.yaml
+  workstation: .taskfiles/Workstation/Taskfile.yaml

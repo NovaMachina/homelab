@@ -1,0 +1,4 @@
+{
+    "ansible.python.interpreterPath": "/usr/bin/python",
+    "sops.defaults.ageKeyFile": "age.key",
+}

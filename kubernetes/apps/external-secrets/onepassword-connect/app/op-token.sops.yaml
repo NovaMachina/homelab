@@ -1,0 +1,28 @@
+apiVersion: v1
+data:
+    token: ENC[AES256_GCM,data:js6IoonZ91xy+VnAqnsus7MBXNfBUcqwZRPCvrpY4Mob17bZKkNdo8bcnXP8kX2YumPJRzVCMYEirYwXKpgKGaj1B7ix0VLv9IygEJeRkboW3swMkyzeHko95l9Q2p2piFW5ywsraHRDkYoGJhxjneSL2MA9Hlikc1GuWTVJbQRacrXxaBp6XIy5LLb//zLKfnGsCexmwp0X4IXhyMSOe8wQF8vBWD9W1P9g2EkztNjBfkZiIC7cV++9vmbrRPy4mGlnLzT8CJUlj1j1gVbC+aNHvYF602UJQn+GsazN0N0yD77KwfRpdvTtziiyljcFcA1BngSrkb/HYFe73BQWu6c6UXa8GAkfBMaIhMLSrgTPz5J9sUsprH0sj/e+eh3yaI9EQuRj2UoHPmP5W6iziXPYh8m3uN7bQJfhwfZ7CFClNIZnz2+0+d96kHmCz6UpbtN01UMBecbFMEInIOhSh80LubojjzdILwHQRS0hcg+TvqRVHmaCXEAU6TUgq/6q7VABjaxPVN0tj8IhOUmREUgNBCJlh8K7pfbRa6ahjM5bMbLGEHxoufMAhKp3iTxuJgVCCqHzKW+re/xnjwiQ7VzLBFx9ZvBa73cZpEfXCHi8CZk7zHkzZ1YQ1kpO7MIC0Y9GUfzfooHaEqppAZw0ZoNyXtRn6P2YJQBw3h2P4Xbgs5PYNmhFaIVsLIPRBu4rWnTb+sYV5iKV1ERo+R/7HldlzSUyVUJd1tY7phLU84XABLLFNDB8ykBIQRK5hDrQwd0CEsYcFnqvEgEEExyy+Eai2HsYsNkoDQtxCs9VYCD3yIlZYUNku/yzOFzpqpJu3Csj8V11gdnMTZREjfarojder5Wq3YDP+6kqOQudeOpjsnRmggpCByxpW2HaOXt6GwMendDF64zPcLgtmMdsShgQK7CEklVWZzP8nSGDxbfXYF3GQxPkmNrLh0P7v9jK1gbW1MxeSC9nqI/UIL52Uh0zmz1BjxnakcYDpJONwr4NvZO9LqYaL2pQQ4OK+g0yBtTY6I5rtA/rrhK08NgUYmGHQJ1FYMJpXAGVdEjAU2wyC4w8LVbgBbHeIW0bdy7perldP9wlV/YYTqAav9xlkX3hwpzlI5ZuZDyg2edAC/5HJgYsZdFlmeokjFI=,iv:SnZnFJfpkPnJcAxo9ufh9c58TdYoyJZWMidFIyoXmNY=,tag:UZPM8785kfcJ7Fd/OmW9Tg==,type:str]
+kind: Secret
+metadata:
+    name: op-token
+    namespace: external-secrets
+type: Opaque
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1zaf432f5rk6zdeteahr3m966qqd7tq8tfpk40x2slhrq74njy4jq6xcngl
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSAvdW0wWWhhcTRsVWV4SUN2
+            TEw3ejNPd09iSHYzMkkvOUdWRklkYWlpZmc0Cm12Tm0yQTcvVTA4SVAvMktxeWN4
+            Tm9veEJsajNJRFZoRGlyU0VwOHVjRGsKLS0tIEgxSDZ0aEVtZEpBSVhEei8wK3Aw
+            QWpwd2JVcC9CaEhuOEk5YWl4a0ZyK2cKzSooMfwLU3QlopLC3LQpgWVFTLHA7tcj
+            tLses/JgyFiyq92ZO1Jt71J7NsO0An3EAe+lCdIUyCdHQOZv/ubpNg==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-05-16T19:01:18Z"
+    mac: ENC[AES256_GCM,data:NenoGBMdj+13x2pRPN94WljSSbFwGRshpPEpnDgUdZrdDrDQPAh7SRB7AVjtdw+s8SQG9rb0RgVjQODmx8zESazq0pPZ8aplz+s9MSXZE+iThpldFPyDLpo8/3gqRwg09Rh1K+T5zUcmuUa1dloFfjDACevskT4DE5Cdn/DQan0=,iv:pGVoTkqNVB9jP53Uci23lAK/OQj/d0mCtjdSstcawDs=,tag:Uxm2KlL6ciqyaK04lC5l5g==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.8.1

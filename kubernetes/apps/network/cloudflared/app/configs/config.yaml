@@ -1,0 +1,10 @@
+---
+originRequest:
+  originServerName: "external.jacob-williams.me"
+
+ingress:
+  - hostname: "jacob-williams.me"
+    service: https://ingress-nginx-external-controller.network.svc.cluster.local:443
+  - hostname: "*.jacob-williams.me"
+    service: https://ingress-nginx-external-controller.network.svc.cluster.local:443
+  - service: http_status:404

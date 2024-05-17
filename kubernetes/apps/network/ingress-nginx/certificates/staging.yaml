@@ -1,0 +1,14 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: "${SECRET_DOMAIN/./-}-staging"
+spec:
+  secretName: "${SECRET_DOMAIN/./-}-staging-tls"
+  issuerRef:
+    name: letsencrypt-staging
+    kind: ClusterIssuer
+  commonName: "jacob-williams.me"
+  dnsNames:
+    - "jacob-williams.me"
+    - "*.jacob-williams.me"

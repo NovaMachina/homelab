@@ -1,0 +1,10 @@
+---
+apiVersion: externaldns.k8s.io/v1alpha1
+kind: DNSEndpoint
+metadata:
+  name: cloudflared
+spec:
+  endpoints:
+    - dnsName: "external.jacob-williams.me"
+      recordType: CNAME
+      targets: ["f32d96df-7068-46a9-a5a0-7f1f4831650b.cfargotunnel.com"]
