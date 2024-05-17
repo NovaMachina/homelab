@@ -33,22 +33,22 @@ spec:
       ingressClassName: "internal"
     longhornManager:
       # nodeSelector:
-      #   longhorn: "true"
+      #   storage: "true"
       tolerations:
-      - key: "longhorn-storage"
+      - key: "storage"
         operator: "Exists"
         effect: "NoSchedule"
     longhornDriver:
       nodeSelector:
-        longhorn: "true"
+        storage: "true"
       tolerations:
-      - key: "longhorn-storage"
+      - key: "storage"
         operator: "Exists"
         effect: "NoSchedule"
     longhornUI:
       nodeSelector:
-        longhorn: "true"
+        storage: "true"
       tolerations:
-      - key: "longhorn-storage"
+      - key: "storage"
         operator: "Exists"
         effect: "NoSchedule"
