@@ -27,8 +27,6 @@ spec:
   values:
     ingress:
       enabled: true
-      annotations:
-        external-dns.alpha.kubernetes.io/target: "external.jacob-williams.me"
       host: "longhorn.jacob-williams.me"
       ingressClassName: "internal"
     longhornManager:
