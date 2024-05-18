@@ -29,24 +29,3 @@ spec:
       enabled: true
       host: "longhorn.jacob-williams.me"
       ingressClassName: "internal"
-    longhornManager:
-      # nodeSelector:
-      #   storage: "true"
-      tolerations:
-      - key: "storage"
-        operator: "Exists"
-        effect: "NoSchedule"
-    longhornDriver:
-      nodeSelector:
-        storage: "true"
-      tolerations:
-      - key: "storage"
-        operator: "Exists"
-        effect: "NoSchedule"
-    longhornUI:
-      nodeSelector:
-        storage: "true"
-      tolerations:
-      - key: "storage"
-        operator: "Exists"
-        effect: "NoSchedule"
