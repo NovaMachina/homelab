@@ -7,6 +7,8 @@ metadata:
   namespace: flux-system
 spec:
   targetNamespace: longhorn
+  dependsOn:
+    - name: ingress-nginx-internal
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
