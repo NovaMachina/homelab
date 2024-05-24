@@ -12,6 +12,7 @@ resources:
   - ./longhorn.yaml
   - ./jetstack.yaml
   - ./metrics-server.yaml
+  - ./mongodb.yaml
   - ./onepassword.yaml
   - ./prometheus-community.yaml
   - ./stakater.yaml
