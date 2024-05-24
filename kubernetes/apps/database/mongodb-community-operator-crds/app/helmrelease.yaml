@@ -8,7 +8,7 @@ spec:
   interval: 30m
   chart:
     spec:
-      chart: mongodb-community-operator-crds
+      chart: community-operator-crds
       version: 0.9.0
       sourceRef:
         kind: HelmRepository
