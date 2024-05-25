@@ -33,7 +33,7 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
-  path: ./kubernetes/apps/database/mongodb-community/database
+  path: ./kubernetes/apps/database/mongodb-community/databases
   prune: false # never should be deleted
   sourceRef:
     kind: GitRepository
