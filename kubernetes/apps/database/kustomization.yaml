@@ -7,5 +7,3 @@ resources:
   - ./namespace.yaml
   # Flux-Kustomizations
   - ./cloudnative-pg/ks.yaml
-  - ./mongodb-community-operator-crds/ks.yaml
-  - ./mongodb-community/ks.yaml
