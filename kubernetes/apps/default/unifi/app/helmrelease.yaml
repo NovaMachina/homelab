@@ -42,7 +42,7 @@ spec:
               MONGO_PASS:
                 valueFrom:
                   secretKeyRef:
-                    name: mongodn-secret
+                    name: mongodb-secret
                     key: password
             ports:
               - name: stun
