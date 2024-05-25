@@ -37,12 +37,12 @@ spec:
               MONGO_USER:
                 valueFrom:
                   secretKeyRef:
-                    name: mongo-secret
+                    name: mongodb-secret
                     key: username
               MONGO_PASS:
                 valueFrom:
                   secretKeyRef:
-                    name: mongo-secret
+                    name: mongodn-secret
                     key: password
             ports:
               - name: stun
