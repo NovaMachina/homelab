@@ -3,7 +3,8 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: unifi
+  name: &app unifi
+  namespace: default
 spec:
   interval: 30m
   chart:
@@ -13,7 +14,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: bjw-s
-        namespace: flux-system
+  maxHistory: 2
   install:
     remediation:
       retries: 3
@@ -21,6 +22,8 @@ spec:
     cleanupOnFail: true
     remediation:
       retries: 3
+  uninstall:
+    keepHistory: false
   values:
     controllers:
       unifi:
@@ -28,47 +31,16 @@ spec:
         containers:
           app:
             image:
-              repository: lscr.io/linuxserver/unifi-network-application
-              tag: 8.1.127-ls46
+              repository: jacobalberty/unifi
+              tag: v8.1.113@sha256:483b7f294845c9e32eeb84ad2cda20ff90e996bcb6fa3107cba35ef36e578fb6
+              pullPolicy: IfNotPresent
             env:
-              MONGO_HOST: unifi-mongodb-svc.database.svc.cluster.local
-              MONGO_PORT: 27017
-              MONGO_DBNAME: unifi
-              MONGO_USER:
-                valueFrom:
-                  secretKeyRef:
-                    name: mongodb-secret
-                    key: username
-              MONGO_PASS:
-                valueFrom:
-                  secretKeyRef:
-                    name: mongodb-secret
-                    key: password
-            ports:
-              - name: stun
-                containerPort: 3478
-                protocol: UDP
-              - name: syslog
-                containerPort: 5514
-                protocol: UDP
-              - name: speedtest
-                containerPort: 6789
-                protocol: TCP
-              - name: devicecom
-                containerPort: 8080
-                protocol: TCP
-              - name: webadmin
-                containerPort: 8443
-                protocol: TCP
-              - name: httpsredirect
-                containerPort: 8843
-                protocol: TCP
-              - name: httpredirect
-                containerPort: 8880
-                protocol: TCP
-              - name: apdiscovery
-                containerPort: 10001
-                protocol: UDP
+              RUNAS_UID0: "false"
+              UNIFI_UID: "999"
+              UNIFI_GID: "999"
+              UNIFI_STDOUT: "true"
+              JVM_INIT_HEAP_SIZE:
+              JVM_MAX_HEAP_SIZE: 1024M
             probes:
               liveness:
                 enabled: true
@@ -86,84 +58,50 @@ spec:
                     port: 8080
                   initialDelaySeconds: 5
                   periodSeconds: 10
-            securityContext:
-              allowPrivilegeEscalation: false
-              readOnlyRootFilesystem: true
-              capabilities: { drop: ["ALL"] }
             resources:
               requests:
                 cpu: 10m
                 memory: 1Gi
-              # limits:
-              #   memory: 1Gi
-    defaultPodOptions:
-      securityContext:
-        runAsNonRoot: true
-        runAsUser: 65534
-        runAsGroup: 65534
-        seccompProfile: { type: RuntimeDefault }
     service:
       app:
-        controller: unifi
+        controller: *app
         ports:
+          http:
+            port: 8443
+            protocol: HTTPS
+          controller:
+            enabled: true
+            port: 8080
+            protocol: TCP
+          portal-http:
+            enabled: false
+            port: 8880
+            protocol: HTTP
+          portal-https:
+            enabled: false
+            port: 8843
+            protocol: HTTPS
           speedtest:
             enabled: true
             port: 6789
-            targetPort: 6789
             protocol: TCP
-          devicecom:
-            enabled: true
-            port: 8080
-            targetPort: 8080
-            protocol: TCP
-          webadmin:
-            enabled: true
-            port: 8443
-            targetPort: 8443
-            protocol: TCP
-          httpsredirect:
-            enabled: true
-            port: 8843
-            targetPort: 8843
-            protocol: TCP
-          httpredirect:
-            enabled: true
-            port: 8880
-            targetPort: 8880
-            protocol: TCP
-          apdiscovery:
-            enabled: true
-            port: 10001
-            targetPort: 10001
-            protocol: UDP
           stun:
             enabled: true
             port: 3478
-            targetPort: 3478
-            protocol: UDP
-          appdiscovery:
-            enabled: true
-            port: 1900
-            targetPort: 1900
             protocol: UDP
           syslog:
             enabled: true
             port: 5514
-            targetPort: 5514
             protocol: UDP
-    # serviceMonitor:
-    #   app:
-    #     serviceName: unifi
-    #     endpoints:
-    #       - port: http
-    #         scheme: http
-    #         path: /metrics
-    #         interval: 1m
-    #         scrapeTimeout: 10s
+          discovery:
+            enabled: true
+            port: 10001
+            protocol: UDP
     ingress:
       app:
         className: external
         annotations:
+          nginx.ingress.kubernetes.io/backend-protocol: HTTPS
           external-dns.alpha.kubernetes.io/target: "external.jacob-williams.me"
         hosts:
           - host: "{{ .Release.Name }}.jacob-williams.me"
@@ -171,4 +109,12 @@ spec:
               - path: /
                 service:
                   identifier: app
-                  port: 8443
+                  port: http
+    persistence:
+      config:
+        enabled: true
+        storageClass: "longhorn"
+        size: 8Gi
+        accessMode: ReadWriteOnce
+        globalMounts:
+          - path: /unifi
