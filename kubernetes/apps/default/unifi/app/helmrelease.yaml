@@ -1,4 +1,5 @@
 ---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/library/common/schemas/service.json
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
@@ -105,45 +106,45 @@ spec:
       tcp:
         controller: unifi
         ports:
-          - port: 6789
+          speedtest:
+            port: 6789
             targetPort: 6789
             protocol: TCP
-            name: speedtest
-          - port: 8080
+          devicecom:
+            port: 8080
             targetPort: 8080
             protocol: TCP
-            name: devicecom
-          - port: 8443
+          webadmin:
+            port: 8443
             targetPort: 8443
             protocol: TCP
-            name: webadmin
-          - port: 8843
+          httpsredirect:
+            port: 8843
             targetPort: 8843
             protocol: TCP
-            name: httpsredirect
-          - port: 8880
+          httpredirect:
+            port: 8880
             targetPort: 8880
             protocol: TCP
-            name: httpredirect
       udp:
         controller: unifi
         ports:
-          - port: 10001
+          apdiscovery:
+            port: 10001
             targetPort: 10001
             protocol: UDP
-            name: apdiscovery
-          - port: 3478
+          stun:
+            port: 3478
             targetPort: 3478
             protocol: UDP
-            name: stun
-          - port: 1900
+          appdiscovery:
+            port: 1900
             targetPort: 1900
             protocol: UDP
-            name: appdiscovery
-          - port: 5514
+          syslog:
+            port: 5514
             targetPort: 5514
             protocol: UDP
-            name: syslog
     # serviceMonitor:
     #   app:
     #     serviceName: unifi
