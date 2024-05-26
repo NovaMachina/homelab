@@ -69,6 +69,7 @@ spec:
         type: LoadBalancer
         annotations:
           "io.cilium/lb-ipam-ips": "10.0.40.150"
+          "io.cilium/bgp-announce": "worker"
         ports:
           http:
             port: 8443
