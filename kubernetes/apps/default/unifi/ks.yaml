@@ -10,6 +10,8 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
+  dependsOn:
+    - name: ingress-nginx-external
   path: ./kubernetes/apps/default/unifi/app
   prune: true
   sourceRef:
