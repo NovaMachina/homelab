@@ -67,6 +67,8 @@ spec:
       app:
         controller: *app
         type: LoadBalancer
+        annotations:
+          "io.cilium/lb-ipam-ips": "10.0.40.150"
         ports:
           http:
             port: 8443
