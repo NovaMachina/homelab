@@ -4,14 +4,14 @@ kind: CiliumBGPPeeringPolicy
 metadata:
  name: bgp-peering-policy-worker
 spec:
- nodeSelector:
-   matchLabels:
-     metal.sidero.dev/serverclass: worker
+#  nodeSelector:
+#    matchLabels:
+#      metal.sidero.dev/serverclass: worker
  virtualRouters:
  - localASN: 65552
-   serviceSelector:
-     matchExpressions:
-       - {key: "io.cilium/bgp-announce", operator: In, values: ['worker']}
+  #  serviceSelector:
+  #    matchExpressions:
+  #      - {key: "io.cilium/bgp-announce", operator: In, values: ['worker']}
    neighbors:
     - peerAddress: '10.0.40.1/32'
       peerASN: 65551
