@@ -66,13 +66,11 @@ spec:
 apiVersion: external-secrets.io/v1alpha1
 kind: PushSecret
 metadata:
-  name: home-assistant-pg-secret # Customisable
-  namespace: external-secrets # Same of the SecretStores
+  name: home-assistant-pg-secret
+  namespace: external-secrets
 spec:
-  updatePolicy: Replace
-  deletionPolicy: Delete # the provider' secret will be deleted if the PushSecret is deleted
-  refreshInterval: 10s # Refresh interval for which push secret will reconcile
-  secretStoreRefs: # A list of secret stores to push secrets to
+  refreshInterval: 1h
+  secretStoreRefs:
     - name: onepassword-connect
       kind: ClusterSecretStore
   selector:
@@ -80,5 +78,47 @@ spec:
       name: home-assistant-app # Source Kubernetes secret to be pushed
   data:
     - match:
+        secretKey: &key dbname
         remoteRef:
-          remoteKey: home-assistant-pg # Remote reference (where the secret is going to be pushed)
+          remoteKey: home-assistant-pg
+          property: *key
+    - match:
+        secretKey: &key host
+        remoteRef:
+          remoteKey: home-assistant-pg
+          property: *key
+    - match:
+        secretKey: &key jdbc-uri
+        remoteRef:
+          remoteKey: home-assistant-pg
+          property: *key
+    - match:
+        secretKey: &key password
+        remoteRef:
+          remoteKey: home-assistant-pg
+          property: *key
+    - match:
+        secretKey: &key pgpass
+        remoteRef:
+          remoteKey: home-assistant-pg
+          property: *key
+    - match:
+        secretKey: &key port
+        remoteRef:
+          remoteKey: home-assistant-pg
+          property: *key
+    - match:
+        secretKey: &key uri
+        remoteRef:
+          remoteKey: home-assistant-pg
+          property: *key
+    - match:
+        secretKey: &key user
+        remoteRef:
+          remoteKey: home-assistant-pg
+          property: *key
+    - match:
+        secretKey: &key username
+        remoteRef:
+          remoteKey: home-assistant-pg
+          property: *key
