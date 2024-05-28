@@ -103,7 +103,7 @@ spec:
             paths:
               - path: /
                 service:
-                  identifier: code
+                  identifier: app
                   port: code
     persistence:
       config:
