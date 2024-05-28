@@ -73,7 +73,7 @@ spec:
   refreshInterval: 10s # Refresh interval for which push secret will reconcile
   secretStoreRefs: # A list of secret stores to push secrets to
     - name: onepassword-connect
-      kind: SecretStore
+      kind: ClusterSecretStore
   selector:
     secret:
       name: home-assistant-app # Source Kubernetes secret to be pushed
