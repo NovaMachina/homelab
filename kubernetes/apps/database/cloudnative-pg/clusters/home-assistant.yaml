@@ -62,3 +62,22 @@ spec:
   #     barmanObjectStore:
   #       <<: *barmanObjectStore
   #       serverName: *previousCluster
+---
+apiVersion: external-secrets.io/v1alpha1
+kind: PushSecret
+metadata:
+  name: home-assistant-pg-secret # Customisable
+  namespace: external-secrets # Same of the SecretStores
+spec:
+  deletionPolicy: Delete # the provider' secret will be deleted if the PushSecret is deleted
+  refreshInterval: 10s # Refresh interval for which push secret will reconcile
+  secretStoreRefs: # A list of secret stores to push secrets to
+    - name: onepassword-connect
+      kind: SecretStore
+  selector:
+    secret:
+      name: home-assistant-app # Source Kubernetes secret to be pushed
+  data:
+    - match:
+        remoteRef:
+          remoteKey: home-assistant-pg # Remote reference (where the secret is going to be pushed)
