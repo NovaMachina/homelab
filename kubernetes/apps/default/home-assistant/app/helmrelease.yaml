@@ -77,9 +77,7 @@ spec:
     persistence:
       config:
         enabled: true
-        storageClass: "longhorn"
-        size: 8Gi
-        accessMode: ReadWriteOnce
+        existingClaim: home-assistant-pvc
       logs:
         type: emptyDir
         globalMounts:
