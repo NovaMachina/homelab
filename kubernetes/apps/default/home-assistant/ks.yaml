@@ -14,6 +14,7 @@ spec:
     - name: ingress-nginx-external
     - name: ingress-nginx-internal
     - name: longhorn
+    - name: cloudnative-pg-cluster
   path: ./kubernetes/apps/default/home-assistant/app
   prune: true
   sourceRef:
