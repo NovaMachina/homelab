@@ -62,63 +62,63 @@ spec:
   #     barmanObjectStore:
   #       <<: *barmanObjectStore
   #       serverName: *previousCluster
----
-apiVersion: external-secrets.io/v1alpha1
-kind: PushSecret
-metadata:
-  name: grafana-pg-secret
-  namespace: external-secrets
-spec:
-  refreshInterval: 1h
-  secretStoreRefs:
-    - name: onepassword-connect
-      kind: ClusterSecretStore
-  selector:
-    secret:
-      name: grafana-app # Source Kubernetes secret to be pushed
-  data:
-    - match:
-        secretKey: &key dbname
-        remoteRef:
-          remoteKey: grafana-pg
-          property: *key
-    - match:
-        secretKey: &key host
-        remoteRef:
-          remoteKey: grafana-pg
-          property: *key
-    - match:
-        secretKey: &key jdbc-uri
-        remoteRef:
-          remoteKey: grafana-pg
-          property: *key
-    - match:
-        secretKey: &key dbpassword
-        remoteRef:
-          remoteKey: grafana-pg
-          property: *key
-    - match:
-        secretKey: &key pgpass
-        remoteRef:
-          remoteKey: grafana-pg
-          property: *key
-    - match:
-        secretKey: &key port
-        remoteRef:
-          remoteKey: grafana-pg
-          property: *key
-    - match:
-        secretKey: &key uri
-        remoteRef:
-          remoteKey: grafana-pg
-          property: *key
-    - match:
-        secretKey: &key user
-        remoteRef:
-          remoteKey: grafana-pg
-          property: *key
-    - match:
-        secretKey: &key username
-        remoteRef:
-          remoteKey: grafana-pg
-          property: *key
+# ---
+# apiVersion: external-secrets.io/v1alpha1
+# kind: PushSecret
+# metadata:
+#   name: grafana-pg-secret
+#   namespace: external-secrets
+# spec:
+#   refreshInterval: 1h
+#   secretStoreRefs:
+#     - name: onepassword-connect
+#       kind: ClusterSecretStore
+#   selector:
+#     secret:
+#       name: grafana-app # Source Kubernetes secret to be pushed
+#   data:
+#     - match:
+#         secretKey: &key dbname
+#         remoteRef:
+#           remoteKey: grafana-pg
+#           property: *key
+#     - match:
+#         secretKey: &key host
+#         remoteRef:
+#           remoteKey: grafana-pg
+#           property: *key
+#     - match:
+#         secretKey: &key jdbc-uri
+#         remoteRef:
+#           remoteKey: grafana-pg
+#           property: *key
+#     - match:
+#         secretKey: &key dbpassword
+#         remoteRef:
+#           remoteKey: grafana-pg
+#           property: *key
+#     - match:
+#         secretKey: &key pgpass
+#         remoteRef:
+#           remoteKey: grafana-pg
+#           property: *key
+#     - match:
+#         secretKey: &key port
+#         remoteRef:
+#           remoteKey: grafana-pg
+#           property: *key
+#     - match:
+#         secretKey: &key uri
+#         remoteRef:
+#           remoteKey: grafana-pg
+#           property: *key
+#     - match:
+#         secretKey: &key user
+#         remoteRef:
+#           remoteKey: grafana-pg
+#           property: *key
+#     - match:
+#         secretKey: &key username
+#         remoteRef:
+#           remoteKey: grafana-pg
+#           property: *key
