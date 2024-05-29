@@ -93,10 +93,10 @@ spec:
           remoteKey: grafana-pg
           property: *key
     - match:
-        secretKey: &key test
+        secretKey: &key password
         remoteRef:
           remoteKey: grafana-pg
-          property: *key
+          property: test
     - match:
         secretKey: &key pgpass
         remoteRef:
