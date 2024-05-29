@@ -93,7 +93,7 @@ spec:
           remoteKey: grafana-pg
           property: *key
     - match:
-        secretKey: &key password
+        secretKey: &key dbpassword
         remoteRef:
           remoteKey: grafana-pg
           property: *key
