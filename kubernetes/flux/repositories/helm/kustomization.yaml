@@ -15,5 +15,6 @@ resources:
   - ./metrics-server.yaml
   - ./mongodb.yaml
   - ./onepassword.yaml
+  - ./pgadmin.yaml
   - ./prometheus-community.yaml
   - ./stakater.yaml
