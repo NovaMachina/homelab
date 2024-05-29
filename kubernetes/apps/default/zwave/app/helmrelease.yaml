@@ -65,8 +65,8 @@ spec:
         fsGroup: 0
         fsGroupChangePolicy: OnRootMismatch
         seccompProfile: { type: RuntimeDefault }
-      # nodeSelector:
-      #   aeotec.feature.node.kubernetes.io/hub: "true"
+      nodeSelector:
+        aeotec.feature.node.kubernetes.io/hub: "true"
     service:
       app:
         controller: zwave
@@ -92,9 +92,9 @@ spec:
           - path: /usr/src/app/store
       tmp:
         type: emptyDir
-      # usb:
-      #   type: hostPath
-      #   hostPath: /dev/serial/by-id/usb-Silicon_Labs_CP2102N_USB_to_UART_Bridge_Controller_86a6e2d61094eb11bec339703d98b6d1-if00-port0        
-      #   hostPathType: CharDevice
-      #   globalMounts:
-      #     - path: /dev/USB0
+      usb:
+        type: hostPath
+        hostPath: /dev/serial/by-id/usb-Silicon_Labs_CP2102N_USB_to_UART_Bridge_Controller_86a6e2d61094eb11bec339703d98b6d1-if00-port0        
+        hostPathType: CharDevice
+        globalMounts:
+          - path: /dev/USB0
