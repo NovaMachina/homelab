@@ -39,9 +39,20 @@ session:
 notifier:
   disable_startup_check: true
   smtp:
-    address: smtp-relay.turbo.ac:25
-    sender: Authelia <authelia@buhl.casa>
-    disable_require_tls: true
+    host: smtp-mail.outlook.com
+    port: 587
+    timeout: 5s
+    username: jacob.t.williams@outlook.com
+    sender: "jacob.t.williams@outlook.com"
+    identifier: "authelia"
+    subject: "[Authelia] {title}"
+    startup_check_address: "jacob.t.williams@outlook.com"
+    disable_require_tls: false
+    disable_html_emails: false
+    tls:
+      server_name: smtp-mail.outlook.com
+      minimum_version: TLS1.2
+      skip_verify: false
 
 totp:
   disable: false
