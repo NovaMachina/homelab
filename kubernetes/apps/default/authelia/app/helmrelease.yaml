@@ -131,10 +131,3 @@ spec:
           - path: /config/configuration.yaml
             subPath: configuration.yaml
             readOnly: true
-      jwks:
-        type: secret
-        name: authelia-secret
-        globalMounts:
-          - path: /config/jwks-private-key.pem
-            subPath: AUTHELIA_JWKS_PRIVATE_KEY
-            readOnly: true
