@@ -117,8 +117,6 @@ spec:
     persistence:
       config:
         enabled: true
-        storageClass: "longhorn"
-        size: 8Gi
-        accessMode: ReadWriteOnce
+        existingClaim: unifi-pvc
         globalMounts:
           - path: /unifi
