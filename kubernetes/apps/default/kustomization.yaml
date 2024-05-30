@@ -6,6 +6,7 @@ resources:
   # Pre Flux-Kustomizations
   - ./namespace.yaml
   # Flux-Kustomizations
+  - ./authelia/ks.yaml
   - ./glauth/ks.yaml
   - ./home-assistant/ks.yaml
   - ./unifi/ks.yaml
