@@ -12,6 +12,7 @@ spec:
       app.kubernetes.io/name: *app
   dependsOn:
     - name: ingress-nginx-external
+    - name: longhorn
   path: ./kubernetes/apps/default/unifi/app
   prune: true
   sourceRef:
