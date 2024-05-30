@@ -133,7 +133,7 @@ spec:
             readOnly: true
       jwks:
         type: secret
-        name: authelia-jwks
+        name: authelia-secret
         globalMounts:
           - path: /config/jwks-private-key.pem
             subPath: AUTHELIA_JWKS_PRIVATE_KEY
