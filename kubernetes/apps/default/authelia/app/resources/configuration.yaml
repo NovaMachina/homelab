@@ -43,7 +43,6 @@ notifier:
     port: 587
     timeout: 5s
     username: jacob.t.williams@outlook.com
-    password: $${AUTHELIA_SMTP_APP_PASSWORD}
     sender: "jacob.t.williams@outlook.com"
     identifier: "authelia"
     subject: "[Authelia] {title}"
