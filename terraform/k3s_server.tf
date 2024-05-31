@@ -1,16 +1,16 @@
-resource "proxmox_vm_qemu" "rke2-server-node" {
+resource "proxmox_vm_qemu" "k3s-server-node" {
     # Node name has to be the same name as within the cluster
     # this might not include the FQDN
     target_node = "pve"
-    desc = "RKE2 Server ${count.index + 1}"
+    desc = "k3s Server ${count.index + 1}"
     count = 3
     onboot = true
 
     # The template name to clone this vm from
-    clone = "ubuntu-cloud"
+    clone = "debian12-cloudinit-template"
 
     # Activate QEMU agent for this VM
-    agent = 0
+    agent = 1
 
     os_type = "cloud-init"
     cores = 1
@@ -19,7 +19,7 @@ resource "proxmox_vm_qemu" "rke2-server-node" {
     vcpus = 0
     cpu = "host"
     memory = 4096
-    name = "rke2-server-0${count.index + 1}"
+    name = "k3s-server-0${count.index + 1}"
 
     cloudinit_cdrom_storage = "local-lvm"
     scsihw   = "virtio-scsi-single" 
@@ -30,7 +30,7 @@ resource "proxmox_vm_qemu" "rke2-server-node" {
             scsi0 {
                 disk {
                   storage = "local-lvm"
-                  size = "20"
+                  size = "32"
                 }
             }
         }
@@ -42,5 +42,9 @@ resource "proxmox_vm_qemu" "rke2-server-node" {
         tag = 400
     }
 
-    ciuser = "ubuntu"
+    ciuser = "debian"
+
+    provisioner "local-exec" {
+      command = "sudo rm -rf /etc/machine-id && sudo dbus-uuidgen --ensure=/etc/machine-id"
+    }
 }

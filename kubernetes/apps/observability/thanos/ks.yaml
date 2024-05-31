@@ -3,19 +3,17 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: &app authelia
+  name: &app thanos
   namespace: flux-system
 spec:
-  targetNamespace: default
+  targetNamespace: observability
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
   dependsOn:
-    - name: cloudnative-pg-cluster
     - name: dragonfly-cluster
     - name: external-secrets-stores
-    - name: longhorn
-  path: ./kubernetes/apps/default/authelia/app
+  path: ./kubernetes/apps/observability/thanos/app
   prune: true
   sourceRef:
     kind: GitRepository
@@ -23,4 +21,4 @@ spec:
   wait: false
   interval: 30m
   retryInterval: 1m
-  timeout: 5m
+  timeout: 15m

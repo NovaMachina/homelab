@@ -1,16 +1,16 @@
-resource "proxmox_vm_qemu" "rke2-longhorn-node" {
+resource "proxmox_vm_qemu" "k3s-agent-node" {
     # Node name has to be the same name as within the cluster
     # this might not include the FQDN
     target_node = "pve"
-    desc = "RKE2 Longhorn Storage Node ${count.index + 1}"
+    desc = "k3s General Agent ${count.index + 1}"
     count = 3
     onboot = true
 
     # The template name to clone this vm from
-    clone = "ubuntu-cloud"
+    clone = "debian12-cloudinit-template"
 
     # Activate QEMU agent for this VM
-    agent = 0
+    agent = 1
 
     os_type = "cloud-init"
     cores = 2
@@ -18,10 +18,10 @@ resource "proxmox_vm_qemu" "rke2-longhorn-node" {
     numa = true
     vcpus = 0
     cpu = "host"
-    memory = 4096
-    name = "rke2-longhorn-0${count.index + 1}"
+    memory = 8192
+    name = "k3s-agent-0${count.index + 1}"
 
-    cloudinit_cdrom_storage = "TrueNAS"
+    cloudinit_cdrom_storage = "local-lvm"
     scsihw   = "virtio-scsi-single" 
     bootdisk = "scsi0"
 
@@ -29,8 +29,8 @@ resource "proxmox_vm_qemu" "rke2-longhorn-node" {
         scsi {
             scsi0 {
                 disk {
-                  storage = "TrueNAS"
-                  size = "256"
+                  storage = "local-lvm"
+                  size = "32"
                 }
             }
         }
@@ -42,11 +42,9 @@ resource "proxmox_vm_qemu" "rke2-longhorn-node" {
         tag = 400
     }
 
-    ciuser = "ubuntu"
+    ciuser = "debian"
 
-    timeouts {
-      create = "2h"
-      update = "2h"
-      delete = "20m"
+    provisioner "local-exec" {
+      command = "sudo rm -rf /etc/machine-id && sudo dbus-uuidgen --ensure=/etc/machine-id"
     }
 }

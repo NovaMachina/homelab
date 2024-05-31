@@ -20,3 +20,4 @@ resources:
   - ./pgadmin.yaml
   - ./prometheus-community.yaml
   - ./stakater.yaml
+  - ./stevehipwell.yaml
