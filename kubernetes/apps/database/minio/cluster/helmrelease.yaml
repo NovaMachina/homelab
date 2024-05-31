@@ -28,3 +28,5 @@ spec:
           volumesPerServer: 1
           size: 2Gi
           storageClassName: longhorn
+      configSecret:
+        existingSecret: true
