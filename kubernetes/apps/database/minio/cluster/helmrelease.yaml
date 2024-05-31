@@ -21,4 +21,9 @@ spec:
     remediation:
       strategy: rollback
       retries: 3
-    
+  values:
+    tenant:
+      pools:
+        - servers: 4
+          volumesPerServer: 1
+          size: 2Gi
