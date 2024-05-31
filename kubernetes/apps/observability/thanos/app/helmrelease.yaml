@@ -24,11 +24,11 @@ spec:
       strategy: rollback
       retries: 3
   values:
-    objstoreConfig:
-      value:
-        type: s3
-        config:
-          insecure: true
+    # objstoreConfig:
+    #   value:
+    #     type: s3
+    #     config:
+    #       insecure: true
     additionalEndpoints:
       - dnssrv+_grpc._tcp.kube-prometheus-stack-thanos-discovery.observability.svc.cluster.local
     additionalReplicaLabels: ["__replica__"]
