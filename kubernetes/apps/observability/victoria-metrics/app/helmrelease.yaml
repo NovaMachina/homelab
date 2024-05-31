@@ -133,7 +133,7 @@ spec:
           - url: http://alertmanager-operated.observability.svc.cluster.local:9093
       ingress:
         enabled: true
-        ingressClassName: internal-nginx
+        ingressClassName: internal
         hosts:
           - vmalert.jacob-williams.me
 
@@ -165,7 +165,7 @@ spec:
           key: prometheus-additional.yaml
       ingress:
         enabled: true
-        ingressClassName: internal-nginx
+        ingressClassName: internal
         hosts:
           - vmagent.jacob-williams.me
 
