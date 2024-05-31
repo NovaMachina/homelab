@@ -160,15 +160,14 @@ spec:
           # - { name: Loki, orgId: 1 }
           - { name: Prometheus, orgId: 1 }
         datasources:
-          # - name: Prometheus
-          #   type: prometheus
-          #   uid: prometheus
-          #   access: proxy
-          #   url: http://thanos-query-frontend.observability.svc.cluster.local:10902
-          #   jsonData:
-          #     prometheusType: Thanos
-          #     timeInterval: 1m
-          #   isDefault: true
+          - name: Prometheus
+            type: prometheus
+            uid: prometheus
+            access: proxy
+            url: http://vmselect-victoria-metrics.observability.svc.cluster.local:8481/select/0/prometheus
+            jsonData:
+              prometheusType: Prometheus
+            isDefault: true
           # - name: Loki
           #   type: loki
           #   uid: loki
