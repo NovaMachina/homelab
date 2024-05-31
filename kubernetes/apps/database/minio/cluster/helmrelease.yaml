@@ -27,3 +27,4 @@ spec:
         - servers: 4
           volumesPerServer: 1
           size: 2Gi
+          storageClassName: longhorn
