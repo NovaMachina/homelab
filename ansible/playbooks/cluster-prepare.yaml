@@ -64,6 +64,14 @@
               nameserver 10.0.40.1
               options edns0 trust-ad
               search home.arpa
+            
+    # - name: Configure Disks
+    #   hosts: storage
+    #   block:
+    #     - name: Configure Disks | Mount Storage Disk
+    #       ansible.posix.mount:
+    #         path: /data
+    #         src: /dev/
 
     - name: System Configuration
       notify: Reboot

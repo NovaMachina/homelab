@@ -1,0 +1,10 @@
+---
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+version: "3"
+
+tasks:
+  install:
+    desc: Complete install of k3s
+    cmds:
+      - task: ":ansible:install"
+      - "cp {{.ROOT_DIR}}/kubeconfig ~/.kube/config"

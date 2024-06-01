@@ -23,6 +23,8 @@ kubernetes:
         "k3s-agent-03":
           ansible_user: "debian"
           ansible_host: "10.0.40.106"
+    storage:
+      hosts:
         "k3s-storage-01":
           ansible_user: "debian"
           ansible_host: "10.0.40.107"

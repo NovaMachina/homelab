@@ -39,13 +39,27 @@ tasks:
     summary: |
       Args:
         playbook: Playbook to run (required)
-    prompt: Run Ansible playbook '{{.playbook}}'... continue?
+    # prompt: Run Ansible playbook '{{.playbook}}'... continue?
     deps: ["deps"]
     cmd: "{{.VIRTUAL_ENV}}/bin/ansible-playbook --inventory {{.ANSIBLE_INVENTORY_FILE}} {{.ANSIBLE_DIR}}/playbooks/{{.playbook}}.yaml {{.CLI_ARGS}}"
     requires:
       vars: ["playbook"]
     preconditions:
       - { msg: "Missing Ansible inventory file", sh: "test -f {{.ANSIBLE_INVENTORY_FILE}}" }
+
+  install:
+    desc: Run Ansible playbooks to configure cluster
+    deps:
+      - deps
+    cmds:
+      - task: run
+        vars:
+          playbook: cluster-prepare
+      - task: run
+        vars:
+          playbook: cluster-installation
+    preconditions:
+      - { msg: "Missing Ansible inventory file", sh: "test -f {{.ANSIBLE_INVENTORY_FILE}}"}
 
   poweroff:
     desc: Shutdown all the k8s nodes

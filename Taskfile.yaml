@@ -6,6 +6,7 @@ vars:
   # Directories
   ANSIBLE_DIR: "{{.ROOT_DIR}}/ansible"
   KUBERNETES_DIR: "{{.ROOT_DIR}}/kubernetes"
+  TERRAFORM_DIR: "{{.ROOT_DIR}}/terraform"
   # Files
   AGE_FILE: "{{.ROOT_DIR}}/age.key"
   KUBECONFIG_FILE: "{{.ROOT_DIR}}/kubeconfig"
@@ -24,3 +25,19 @@ includes:
   flux: .taskfiles/Flux/Taskfile.yaml
   sops: .taskfiles/Sops/Taskfile.yaml
   workstation: .taskfiles/Workstation/Taskfile.yaml
+  cluster: .taskfiles/Cluster/Taskfile.yaml
+  terraform: .taskfiles/Terraform/Taskfile.yaml
+
+tasks:
+  build-stack:
+    cmds:
+      - task: "terraform:build"
+      - task: "cluster:install"
+      - task: "flux:bootstrap"
+
+  destroy-stack:
+    cmds:
+      - task: "ansible:run"
+        vars:
+          playbook: cluster-nuke
+      - task: "terraform:destroy"

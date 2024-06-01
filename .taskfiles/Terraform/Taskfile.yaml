@@ -1,0 +1,38 @@
+---
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+version: "3"
+
+tasks:
+  deps:
+    cmds:
+      - 'terraform -chdir={{.TERRAFORM_DIR}} init'
+    sources:
+      - "{{.TERRAFORM_DIR}}/providers.tf"
+    generates:
+      - "{{.TERRAFORM_DIR}}/.terraform.lock.hcl"
+  
+  build:
+    deps:
+      - "deps"
+    cmds:
+      - 'terraform -chdir={{.TERRAFORM_DIR}} apply -auto-approve '
+    preconditions:
+      - { msg: "Terraform files are not valid", sh: "terraform -chdir={{.TERRAFORM_DIR}} validate"}
+    generates:
+      - "{{.TERRAFORM_DIR}}/terraform.tfstate"
+  
+  plan:
+    deps:
+      - "deps"
+    cmds:
+      - 'terraform -chdir={{.TERRAFORM_DIR}} plan'
+    preconditions:
+      - { msg: "Terraform files are not valid", sh: "terraform -chdir={{.TERRAFORM_DIR}} validate"}
+    
+  destroy:
+    deps:
+      - "deps"
+    cmds:
+      - 'terraform -chdir={{.TERRAFORM_DIR}} apply -destroy -auto-approve'
+    preconditions:
+      - { msg: "Missing terraform.tfstate", sh: "test -f {{.TERRAFORM_DIR}}/terraform.tfstate"}
