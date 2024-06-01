@@ -23,6 +23,11 @@ variable "proxmox_token_id" {
   default = "root@pam!terraform"
 }
 
+variable "sudo_password" {
+  type = string
+  default = "password"
+}
+
 provider "proxmox" {
     pm_tls_insecure = true
     pm_api_url = "${format("%s%s", var.proxmox_url, "/api2/json")}"

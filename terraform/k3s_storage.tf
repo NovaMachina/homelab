@@ -30,13 +30,14 @@ resource "proxmox_vm_qemu" "k3s-storage-node" {
             scsi0 {
                 disk {
                   storage = "local-lvm"
-                  size = "32G"
+                  size = "32"
+                  emulatessd = true
                 }
             }
             scsi1 {
               disk {
                 storage = "TrueNAS"
-                size = "1024G"
+                size = "1024"
               }
             }
         }
@@ -48,6 +49,8 @@ resource "proxmox_vm_qemu" "k3s-storage-node" {
         tag = 400
     }
 
+    ipconfig0 = "ip=10.0.40.10${count.index + 7}/24,gw=10.0.40.1"
+
     ciuser = "debian"
 
     timeouts {
@@ -56,7 +59,18 @@ resource "proxmox_vm_qemu" "k3s-storage-node" {
       delete = "20m"
     }
 
-    provisioner "local-exec" {
-      command = "sudo rm -rf /etc/machine-id && sudo dbus-uuidgen --ensure=/etc/machine-id"
+    connection {
+      type = "ssh"
+      agent = true
+      host = "10.0.40.10${count.index + 7}"
+      user = "debian"
+      private_key = file(pathexpand("~/.ssh/id_rsa"))
+    }
+
+    provisioner "remote-exec" {
+        inline = [ 
+            "echo ${var.sudo_password} | sudo -S rm -rf /etc/machine-id",
+            "echo ${var.sudo_password} | sudo -S dbus-uuidgen --ensure=/etc/machine-id",
+         ]
     }
 }

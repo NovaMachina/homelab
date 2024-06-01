@@ -13,7 +13,7 @@ resource "proxmox_vm_qemu" "k3s-server-node" {
     agent = 1
 
     os_type = "cloud-init"
-    cores = 1
+    cores = 2
     sockets = 2
     numa = true
     vcpus = 0
@@ -31,6 +31,7 @@ resource "proxmox_vm_qemu" "k3s-server-node" {
                 disk {
                   storage = "local-lvm"
                   size = "32"
+                  emulatessd = true
                 }
             }
         }
@@ -42,9 +43,22 @@ resource "proxmox_vm_qemu" "k3s-server-node" {
         tag = 400
     }
 
+    ipconfig0 = "ip=10.0.40.10${count.index + 1}/24,gw=10.0.40.1"
+
     ciuser = "debian"
 
-    provisioner "local-exec" {
-      command = "sudo rm -rf /etc/machine-id && sudo dbus-uuidgen --ensure=/etc/machine-id"
+    connection {
+      type = "ssh"
+      agent = true
+      host = "10.0.40.10${count.index + 1}"
+      user = "debian"
+      private_key = file(pathexpand("~/.ssh/id_rsa"))
+    }
+
+    provisioner "remote-exec" {
+        inline = [ 
+            "echo ${var.sudo_password} | sudo -S rm -rf /etc/machine-id",
+            "echo ${var.sudo_password} | sudo -S dbus-uuidgen --ensure=/etc/machine-id",
+         ]
     }
 }

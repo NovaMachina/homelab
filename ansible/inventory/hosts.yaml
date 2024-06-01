@@ -5,30 +5,30 @@ kubernetes:
       hosts:
         "k3s-server-01":
           ansible_user: "debian"
-          ansible_host: "10.0.40.100"
+          ansible_host: "10.0.40.101"
         "k3s-server-02":
           ansible_user: "debian"
-          ansible_host: "10.0.40.101"
+          ansible_host: "10.0.40.102"
         "k3s-server-03":
           ansible_user: "debian"
-          ansible_host: "10.0.40.102"
+          ansible_host: "10.0.40.103"
     agents:
       hosts:
         "k3s-agent-01":
           ansible_user: "debian"
-          ansible_host: "10.0.40.103"
+          ansible_host: "10.0.40.104"
         "k3s-agent-02":
           ansible_user: "debian"
-          ansible_host: "10.0.40.104"
+          ansible_host: "10.0.40.105"
         "k3s-agent-03":
           ansible_user: "debian"
-          ansible_host: "10.0.40.105"
+          ansible_host: "10.0.40.106"
         "k3s-storage-01":
           ansible_user: "debian"
-          ansible_host: "10.0.40.106"
+          ansible_host: "10.0.40.107"
         "k3s-storage-02":
           ansible_user: "debian"
-          ansible_host: "10.0.40.107"
+          ansible_host: "10.0.40.108"
         "k3s-storage-03":
           ansible_user: "debian"
-          ansible_host: "10.0.40.108"
+          ansible_host: "10.0.40.109"
