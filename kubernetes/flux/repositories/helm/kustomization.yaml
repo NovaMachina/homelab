@@ -20,6 +20,7 @@ resources:
   - ./onepassword.yaml
   - ./pgadmin.yaml
   - ./prometheus-community.yaml
+  - ./rook-ceph.yaml
   - ./stakater.yaml
   - ./stevehipwell.yaml
   - ./victoria-metrics.yaml
