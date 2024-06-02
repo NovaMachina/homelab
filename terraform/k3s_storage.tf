@@ -18,7 +18,7 @@ resource "proxmox_vm_qemu" "k3s-storage-node" {
     numa = true
     vcpus = 0
     cpu = "host"
-    memory = 4096
+    memory = 8192
     name = "k3s-storage-0${count.index + 1}"
 
     cloudinit_cdrom_storage = "local-lvm"
