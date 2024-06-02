@@ -10,5 +10,5 @@ spec:
     kind: ClusterIssuer
   commonName: "jacob-williams.me"
   dnsNames:
-    - "jacob-williams.me"
+    # - "jacob-williams.me"
     - "*.jacob-williams.me"
