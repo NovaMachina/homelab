@@ -18,7 +18,7 @@ resource "proxmox_vm_qemu" "k3s-agent-node" {
     numa = true
     vcpus = 0
     cpu = "host"
-    memory = 8192
+    memory = 12288
     name = "k3s-agent-0${count.index + 1}"
 
     cloudinit_cdrom_storage = "local-lvm"
