@@ -11,7 +11,7 @@ spec:
     labels:
       app.kubernetes.io/name: *appname
   interval: 10m
-  path: ./kubernetes/apps/rook-ceph/rook-cech/app
+  path: ./kubernetes/apps/rook-ceph/rook-ceph/app
   prune: true
   sourceRef:
     kind: GitRepository
