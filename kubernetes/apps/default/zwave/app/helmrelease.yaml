@@ -87,7 +87,7 @@ spec:
                   port: http
     persistence:
       config:
-        existingClaim: zwave-pvc
+        existingClaim: zwave
         globalMounts:
           - path: /usr/src/app/store
       tmp:

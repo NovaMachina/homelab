@@ -110,7 +110,7 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: home-assistant-pvc
+        existingClaim: home-assistant
       logs:
         type: emptyDir
         globalMounts:
