@@ -19,6 +19,7 @@ resources:
   - ./mongodb.yaml
   - ./node-feature-discovery.yaml
   - ./onepassword.yaml
+  - ./openebs.yaml
   - ./pgadmin.yaml
   - ./piraeus.yaml
   - ./prometheus-community.yaml
