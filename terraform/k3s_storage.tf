@@ -37,7 +37,7 @@ resource "proxmox_vm_qemu" "k3s-storage-node" {
             scsi1 {
               disk {
                 storage = "TrueNAS"
-                size = "1024"
+                size = "512"
               }
             }
         }
