@@ -34,7 +34,7 @@ spec:
               tag: 16
             envFrom: &envFrom
               - secretRef:
-                  name: home-assitant-secret
+                  name: home-assistant-secret
         containers:
           app:
             image:
