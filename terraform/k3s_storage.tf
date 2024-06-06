@@ -1,6 +1,8 @@
 resource "proxmox_vm_qemu" "k3s-storage-node" {
     # Node name has to be the same name as within the cluster
     # this might not include the FQDN
+    depends_on = [ proxmox_vm_qemu.k3s-server-node, proxmox_vm_qemu.k3s-agent-node ]
+    
     target_node = "pve"
     desc = "k3s Storage Node ${count.index + 1}"
     count = 3
@@ -18,7 +20,7 @@ resource "proxmox_vm_qemu" "k3s-storage-node" {
     numa = true
     vcpus = 0
     cpu = "host"
-    memory = 6144
+    memory = 16384
     name = "k3s-storage-0${count.index + 1}"
 
     cloudinit_cdrom_storage = "local-lvm"
