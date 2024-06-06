@@ -18,7 +18,6 @@ resources:
   - ./onepassword.yaml
   - ./openebs.yaml
   - ./pgadmin.yaml
-  - ./piraeus.yaml
   - ./prometheus-community.yaml
   - ./rook-ceph.yaml
   - ./stakater.yaml
