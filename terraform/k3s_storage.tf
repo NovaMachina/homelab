@@ -13,12 +13,12 @@ resource "proxmox_vm_qemu" "k3s-storage-node" {
     agent = 1
 
     os_type = "cloud-init"
-    cores = 2
+    cores = 3
     sockets = 2
     numa = true
     vcpus = 0
     cpu = "host"
-    memory = 8192
+    memory = 6144
     name = "k3s-storage-0${count.index + 1}"
 
     cloudinit_cdrom_storage = "local-lvm"

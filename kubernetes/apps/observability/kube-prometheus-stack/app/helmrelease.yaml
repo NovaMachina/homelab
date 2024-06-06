@@ -28,8 +28,6 @@ spec:
   dependsOn:
     - name: prometheus-operator-crds
       namespace: observability
-    - name: longhorn
-      namespace: longhorn
   values:
     crds:
       enabled: false
@@ -48,7 +46,7 @@ spec:
         storage:
           volumeClaimTemplate:
             spec:
-              storageClassName: longhorn
+              storageClassName: ceph-block
               resources:
                 requests:
                   storage: 1Gi
@@ -137,7 +135,7 @@ spec:
         storageSpec:
           volumeClaimTemplate:
             spec:
-              storageClassName: longhorn
+              storageClassName: ceph-block
               resources:
                 requests:
                   storage: 20Gi

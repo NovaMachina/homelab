@@ -12,7 +12,8 @@ spec:
       app.kubernetes.io/name: *app
   dependsOn:
     - name: ingress-nginx-external
-    - name: longhorn
+    - name: rook-ceph-cluster
+    - name: volsync
   path: ./kubernetes/apps/default/unifi/app
   prune: true
   sourceRef:
@@ -22,3 +23,7 @@ spec:
   interval: 30m
   retryInterval: 1m
   timeout: 5m
+  postBuild:
+    substitute:
+      APP: *app
+      VOLSYNC_CAPACITY: 5Gi
