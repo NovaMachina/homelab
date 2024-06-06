@@ -14,7 +14,6 @@ resources:
   - ./k8s-gateway.yaml
   - ./jetstack.yaml
   - ./metrics-server.yaml
-  - ./mongodb.yaml
   - ./node-feature-discovery.yaml
   - ./onepassword.yaml
   - ./openebs.yaml
