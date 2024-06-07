@@ -8,7 +8,7 @@ spec:
   issuerRef:
     name: letsencrypt-production
     kind: ClusterIssuer
-  commonName: "*.jacob-williams.me"
+  commonName: "jacob-williams.me"
   dnsNames:
-    # - "jacob-williams.me"
+    - "jacob-williams.me"
     - "*.jacob-williams.me"
