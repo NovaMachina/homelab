@@ -14,7 +14,7 @@ spec:
     - name: cloudnative-pg-cluster
     - name: external-secrets-stores
     - name: rook-ceph-cluster
-    - name: authelia
+    # - name: authelia
     - name: kube-prometheus-stack
   path: ./kubernetes/apps/observability/grafana/app
   prune: true
