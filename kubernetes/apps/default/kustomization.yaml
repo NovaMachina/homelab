@@ -10,4 +10,4 @@ resources:
   # - ./glauth/ks.yaml
   # - ./home-assistant/ks.yaml
   # - ./unifi/ks.yaml
-  - ./zwave/ks.yaml
+  # - ./zwave/ks.yaml
