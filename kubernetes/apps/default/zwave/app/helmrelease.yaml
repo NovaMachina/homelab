@@ -31,7 +31,7 @@ spec:
           app:
             image:
               repository: ghcr.io/zwave-js/zwave-js-ui
-              tag: 9.13.4@sha256:06fa3ff17f99ba6f57ec486b62ff497ba6d534f2ab543eddbe1f7c9a142f8933
+              tag: 9.17.0@sha256:9e525130a0a4d76b723a4e8b2d0244f1d8c9a347de232ee0d3ec3c9026f5e08f
             env:
               TZ: America/Chicago
               PORT: &port 80
